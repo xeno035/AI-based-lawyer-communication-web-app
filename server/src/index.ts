@@ -10,6 +10,9 @@ import { promises as fs } from 'fs';
 import { existsSync, mkdirSync } from 'fs';
 import { analyzeDocument } from './utils/documentAnalysis';
 import { Request, Response } from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const httpServer = createServer(app);
