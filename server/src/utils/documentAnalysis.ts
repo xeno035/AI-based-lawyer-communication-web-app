@@ -2,6 +2,8 @@ import { spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs/promises';
 import { DocumentAnalysis, LegalReference, CaseLawReference, HuggingFaceResponse } from '../types';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Define types for our constants
 interface IPCSection {
