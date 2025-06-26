@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 
 // Replace with a valid API key - the current one is returning 403 Forbidden
-const HF_API_KEY = 'hf_FakeDummyKeyForDemoPurposes987654321';
+const HF_API_KEY = process.env.HUGGINGFACE_API_KEY;
 
 app.post('/api/hf-keywords', async (req, res) => {
   const { text } = req.body;

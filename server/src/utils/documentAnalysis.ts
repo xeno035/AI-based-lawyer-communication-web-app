@@ -342,7 +342,7 @@ const IPC_KEYWORDS: IPCKeywordMap = {
 };
 
 // Replace the Hugging Face API key with the new one
-const HF_API_KEY = process.env.HF_API_KEY;
+const HF_API_KEY = process.env.HUGGINGFACE_API_KEY;
 
 // Text extraction using Python script
 async function extractText(filePath: string): Promise<string> {

@@ -144,7 +144,7 @@ app.post('/api/ipc-search', async (req, res) => {
       {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer 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',
+          'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -215,7 +215,7 @@ async function analyzeLegalDocument(text: string) {
     {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer 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',
+        'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -335,7 +335,7 @@ async function checkLegalRelevance(text: string): Promise<{ isLegal: boolean; re
     {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer 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',
+        'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({

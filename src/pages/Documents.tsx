@@ -4,7 +4,7 @@ import { useSocket } from '../contexts/SocketContext';
 import { Paperclip, Upload, Download, FileText, File, Trash2, Eye, Share, Share2, MessageSquare, Check, X } from 'lucide-react';
 import { formatDate } from '../utils/dateUtils';
 import { formatFileSize, getFileIcon, isImageFile } from '../utils/fileUtils';
-import { Document, User } from '../types';
+import { Document, User } from '../types/index';
 
 // Mock documents for testing
 const mockDocuments: Document[] = [
@@ -89,11 +89,11 @@ const Documents: React.FC = () => {
   }, [socket]);
 
   // Filter documents to show only those uploaded by or shared with the current user
-  const visibleDocuments = documents.filter(
+  const visibleDocuments = user ? documents.filter(
     doc =>
       doc.uploadedBy.id === user.id ||
       (doc.sharedWith && doc.sharedWith.some((u: any) => u.id === user.id || u.email === user.email))
-  );
+  ) : [];
 
   // Mock document upload function
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -459,7 +459,7 @@ const Documents: React.FC = () => {
                     <button
                       onClick={() => {
                         const link = document.createElement('a');
-                        link.href = doc.url;
+                        link.href = doc.url || '';
                         link.download = doc.name;
                         document.body.appendChild(link);
                         link.click();
